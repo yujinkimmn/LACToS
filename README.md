@@ -4,6 +4,19 @@
 
 [공식 LACToS](https://github.com/voilalab/LACToS)의 코드를 고정된 커밋으로 가져와 **GitHub Actions에서만** 검증합니다. 사용자의 PC에는 데이터셋을 다운로드하지 않습니다.
 
+## 검증 완료 — 2026-10-28
+
+[GitHub Actions 실행 #2](https://github.com/yujinkimmn/LACToS/actions/runs/40622745437)에서 세 단계 모두 성공했습니다.
+
+- **DVXray 전체 144장 새 scoring:** AUROC **0.9607**, AP **0.0568**, AUPRO **0.8179** — 논문과 소수점 4자리 일치, 실패 0장.
+- **Table 1:** 저자 score map에서 재계산한 63/63개 셀 소수점 4자리 일치.
+- **FFHQ 2장:** 특징 추출·autoencoder 경로 통과. 전체 100장 벤치마크는 아닙니다.
+- 임시 데이터 삭제 완료. Dataset은 사용자 PC에 저장하지 않았습니다.
+
+[상세 재현 보고서](reports/2026-10-28-reproduction.md) · [원시 검증 수치 JSON](reports/2026-10-28/verification.json)
+
+저자 제공 reconstruction으로 scoring을 새로 수행했으며, diffusion 생성과 학습을 다시 실행한 것은 아닙니다.
+
 ## 실행 범위
 
 | 단계 | 데이터 / 실행 | 통과 조건 |

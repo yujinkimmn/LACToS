@@ -1,0 +1,192 @@
+{
+  "schema_version": 1,
+  "provenance": "Stage objects and download metadata extracted without modification from the completed GitHub Actions job log.",
+  "repository": "yujinkimmn/LACToS",
+  "run": {
+    "id": 40622745437,
+    "url": "https://github.com/yujinkimmn/LACToS/actions/runs/40622745437",
+    "job_id": 122600406445,
+    "status": "completed",
+    "conclusion": "success",
+    "tested_commit": "7f88c317e75ab7350d636a445eab3107c1888fc2",
+    "started_at": "2026-10-28T02:44:57Z",
+    "completed_at": "2026-10-28T02:58:32Z",
+    "elapsed_seconds": 815
+  },
+  "artifact": {
+    "id": 12788845848,
+    "name": "lactos-paper-report-40622745437",
+    "size_in_bytes": 15508,
+    "digest": "sha256:2049ecffd6f5d32801d47dcf33c3bb9bba4e9d2b99800d152f4097615deb2704",
+    "expires_at": "2026-11-04T02:58:25Z",
+    "url": "https://github.com/yujinkimmn/LACToS/actions/runs/40622745437/artifacts/12788845848"
+  },
+  "data_download": {
+    "source_url": "https://drive.usercontent.google.com/download?id=1KFtL_6QT1Yt32jjCPHJgTcOROGFWf61v&export=download&confirm=t",
+    "downloaded_bytes": 7481497600,
+    "sha256": "d46969f2ee9c89bcbf7dd286b9dfd930e07586a5c704ec9defb1cbd3c7d78e21",
+    "sha256_status": "Computed on GitHub Actions; authors do not publish a checksum in BUNDLE.md",
+    "extracted_files": 11377,
+    "extracted_bytes": 1487041208,
+    "included_prefixes": [
+      "data/",
+      "recons/",
+      "reference_results/",
+      "checkpoints/lactos/"
+    ],
+    "archive_saved": false,
+    "execution": "GitHub Actions ephemeral runner"
+  },
+  "stages": [
+    {
+      "stage": "reference",
+      "device": "cpu",
+      "threads": 2,
+      "started_at_utc": "2026-10-28T02:48:34.980875+00:00",
+      "upstream_commit": "d1ebf01dd268629bed18f3e3e9ae9c22c666f117",
+      "python": "3.10.22",
+      "versions": {
+        "torch": "2.0.1+cpu",
+        "torchvision": "0.15.2+cpu",
+        "numpy": "1.24.3",
+        "scipy": "1.10.1",
+        "scikit-image": "0.19.2",
+        "scikit-learn": "1.2.2",
+        "Pillow": "12.3.0"
+      },
+      "runner_sha256": "8bba1969a076c32625685d5828494287558feada2ce8e7aea007773310b7ba52",
+      "diffusion_sampling_rerun": false,
+      "training_rerun": false,
+      "status": "PASS",
+      "compared_cells": 63,
+      "scope": "Metrics recomputed from author-provided score maps; no fresh inference",
+      "runtime_seconds": 128.01324509600002
+    },
+    {
+      "stage": "xray",
+      "device": "cpu",
+      "threads": 2,
+      "started_at_utc": "2026-10-28T02:50:43.060359+00:00",
+      "upstream_commit": "d1ebf01dd268629bed18f3e3e9ae9c22c666f117",
+      "python": "3.10.22",
+      "versions": {
+        "torch": "2.0.1+cpu",
+        "torchvision": "0.15.2+cpu",
+        "numpy": "1.24.3",
+        "scipy": "1.10.1",
+        "scikit-image": "0.19.2",
+        "scikit-learn": "1.2.2",
+        "Pillow": "12.3.0"
+      },
+      "runner_sha256": "8bba1969a076c32625685d5828494287558feada2ce8e7aea007773310b7ba52",
+      "diffusion_sampling_rerun": false,
+      "training_rerun": false,
+      "samples": {
+        "xrsc": 72,
+        "xrgd": 72
+      },
+      "status": "PASS",
+      "metrics": {
+        "AUROC": 0.9606820481230974,
+        "AP": 0.0567774364737051,
+        "AUPRO": 0.8178839382847884
+      },
+      "scope": "All 144 DVXray images freshly scored from the authors' 20 reconstructions per image, original paper settings",
+      "runtime_seconds": 280.647902986
+    },
+    {
+      "stage": "ffhq",
+      "device": "cpu",
+      "threads": 2,
+      "started_at_utc": "2026-10-28T02:55:23.789309+00:00",
+      "upstream_commit": "d1ebf01dd268629bed18f3e3e9ae9c22c666f117",
+      "python": "3.10.22",
+      "versions": {
+        "torch": "2.0.1+cpu",
+        "torchvision": "0.15.2+cpu",
+        "numpy": "1.24.3",
+        "scipy": "1.10.1",
+        "scikit-image": "0.19.2",
+        "scikit-learn": "1.2.2",
+        "Pillow": "12.3.0"
+      },
+      "runner_sha256": "8bba1969a076c32625685d5828494287558feada2ce8e7aea007773310b7ba52",
+      "diffusion_sampling_rerun": false,
+      "training_rerun": false,
+      "status": "PASS",
+      "samples": [
+        "samples_1",
+        "samples_10"
+      ],
+      "metrics": {
+        "pooled_auroc": 0.9808792526912514,
+        "pooled_aupr": 0.23895162402433578,
+        "aupro": 0.9199063009499409
+      },
+      "reference_subset_metrics": {
+        "pooled_auroc": 0.9808262394323252,
+        "pooled_aupr": 0.23773118687721057,
+        "aupro": 0.9187269428563026
+      },
+      "metric_deltas": {
+        "pooled_auroc": 0.000053013258926259965,
+        "pooled_aupr": 0.0012204371471252196,
+        "aupro": 0.0011793580936382275
+      },
+      "scope": "Two FFHQ faces: fresh full and RGB-only scores combined with paper lambda=.25, sigma=5",
+      "deviations": [
+        "CPU instead of GPU",
+        "embedding batch 1 instead of 4; direct AE encoding preserved"
+      ],
+      "caveat": "Two-image installation check, not the full 100-image FFHQ benchmark",
+      "runtime_seconds": 181.37981847600008
+    }
+  ],
+  "dvxray_paper_comparison": {
+    "expected": {
+      "AUROC": 0.9607,
+      "AP": 0.0568,
+      "AUPRO": 0.8179
+    },
+    "absolute_deltas": {
+      "AUROC": 0.00001795187690256661,
+      "AP": 0.00002256352629490671,
+      "AUPRO": 0.000016061715211512784
+    },
+    "equal_at_four_decimals": true,
+    "allowed_absolute_tolerance": 0.005
+  },
+  "sample_log_checks": {
+    "xrsc": {
+      "scored": 72,
+      "failed": 0
+    },
+    "xrgd": {
+      "scored": 72,
+      "failed": 0
+    },
+    "ffhq_full": {
+      "scored": 2,
+      "failed": 0
+    },
+    "ffhq_rgbonly": {
+      "scored": 2,
+      "failed": 0
+    }
+  },
+  "storage": {
+    "execution": "GitHub-hosted ephemeral runner",
+    "archive_saved": false,
+    "datasets_in_git": false,
+    "datasets_in_artifact": false,
+    "cleanup_step": "Remove temporary datasets, maps and weights",
+    "cleanup_conclusion": "success"
+  },
+  "limitations": [
+    "Diffusion sampling was not rerun.",
+    "Training was not rerun.",
+    "Reference stage only recomputed metrics from author-provided score maps.",
+    "FFHQ fresh scoring was limited to two images; this is not the full 100-image benchmark.",
+    "No wafer dataset performance was measured."
+  ]
+}
