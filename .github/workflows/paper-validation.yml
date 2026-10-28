@@ -1,0 +1,86 @@
+name: LACToS paper validation
+
+on:
+  workflow_dispatch:
+    inputs:
+      stage:
+        description: Paper verification scope
+        type: choice
+        options: [all, reference, xray, ffhq]
+        default: all
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/paper-validation.yml'
+      - 'scripts/**'
+      - 'upstream.json'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: lactos-paper-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  reproduce:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 120
+    env:
+      PYTHONUNBUFFERED: '1'
+      OMP_NUM_THREADS: '2'
+      MKL_NUM_THREADS: '2'
+      OPENBLAS_NUM_THREADS: '2'
+      ASSET_DIR: ${{ runner.temp }}/lactos-paper-assets
+      RESULT_DIR: ${{ github.workspace }}/runs/paper
+      TORCH_HOME: ${{ runner.temp }}/torch-cache
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+      - name: Fetch pinned official code
+        run: python scripts/bootstrap.py
+      - name: Install paper dependencies on CPU
+        run: |
+          python -m pip install 'pip<24.1'
+          python -m pip install torch==2.0.1 torchvision==0.15.2 --index-url https://download.pytorch.org/whl/cpu
+          python -m pip install -r vendor/LACToS/requirements.txt
+          mkdir -p "$RESULT_DIR"
+          python -m pip freeze > "$RESULT_DIR/environment.txt"
+      - name: Stream selected paper assets to the temporary runner
+        run: |
+          python scripts/download_assets.py --destination "$ASSET_DIR"
+          cp "$ASSET_DIR/asset_download.json" "$RESULT_DIR/asset_download.json"
+      - name: Recompute all 63 paper table cells from reference maps
+        if: github.event_name == 'push' || inputs.stage == 'all' || inputs.stage == 'reference'
+        run: python scripts/run_paper.py reference --assets "$ASSET_DIR" --output "$RESULT_DIR/reference" --threads 2
+      - name: Fresh LACToS scoring on all 144 DVXray paper images
+        if: github.event_name == 'push' || inputs.stage == 'all' || inputs.stage == 'xray'
+        run: python scripts/run_paper.py xray --assets "$ASSET_DIR" --output "$RESULT_DIR/xray" --threads 2
+      - name: FFHQ checkpoint and feature-path check on two paper images
+        if: github.event_name == 'push' || inputs.stage == 'all' || inputs.stage == 'ffhq'
+        run: python scripts/run_paper.py ffhq --assets "$ASSET_DIR" --output "$RESULT_DIR/ffhq" --threads 2
+      - name: Summarize observed results
+        if: always()
+        run: python scripts/summarize.py --results "$RESULT_DIR"
+      - name: Save reports and logs only
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: lactos-paper-report-${{ github.run_id }}
+          retention-days: 7
+          if-no-files-found: warn
+          path: |
+            runs/paper/environment.txt
+            runs/paper/asset_download.json
+            runs/paper/summary.md
+            runs/paper/**/verification.json
+            runs/paper/**/table1.json
+            runs/paper/**/table1.md
+            runs/paper/**/logs/*.log
+      - name: Remove temporary datasets, maps and weights
+        if: always()
+        run: |
+          rm -rf -- "$ASSET_DIR" "$TORCH_HOME"
+          find "$RESULT_DIR" -type f \( -name '*.npz' -o -name '*.png' -o -name '*.pth' -o -name '*.pt' \) -delete
