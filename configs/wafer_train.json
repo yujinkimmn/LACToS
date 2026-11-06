@@ -1,0 +1,17 @@
+{
+  "image_size": 256,
+  "crop_border": 0,
+  "base_channels": 32,
+  "channel_mult": [1, 2, 4, 4],
+  "attention": true,
+  "diffusion_steps": 1000,
+  "schedule": "linear",
+  "batch_size": 8,
+  "learning_rate": 0.0002,
+  "ema_decay": 0.999,
+  "max_steps": 50000,
+  "validate_every": 500,
+  "val_images": 64,
+  "workers": 4,
+  "seed": 42
+}

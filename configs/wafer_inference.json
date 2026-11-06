@@ -1,0 +1,11 @@
+{
+  "draws": 5,
+  "sigma": 0.2,
+  "dps_scale": 0.4,
+  "seed": 42,
+  "superpixel_size": 20,
+  "bins": 16,
+  "hist_sigma": 1.0,
+  "spatial_sigma": 2.0,
+  "top_fraction": 0.01
+}

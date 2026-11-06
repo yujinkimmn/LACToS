@@ -1,0 +1,15 @@
+{
+  "scope": "synthetic functional smoke test, not wafer/paper performance",
+  "train_steps": 4,
+  "resume_updates_weights": true,
+  "same_seed_reproducible": true,
+  "distinct_draws": true,
+  "official_scoring_finite": true,
+  "heldout_test_images": 6,
+  "upstream_hashes": {
+    "ood/scoring.py": "c962c7078091eb569a912bcdf4f1e6648823a674c92a9af24c8ef241c4f85f34",
+    "ood/superpixels.py": "bd48e73d2d5e053f7768041f08617654725f4b09ab565696f559dcf5ec1b1adf"
+  },
+  "torch": "2.15.0+cpu",
+  "numpy": "2.5.4"
+}

@@ -1,0 +1,498 @@
+{
+  "review_date": "2026-11-06",
+  "repository": "voilalab/LACToS",
+  "commit": "d1ebf01dd268629bed18f3e3e9ae9c22c666f117",
+  "scanned_file_count": 93,
+  "scope": "Static pattern scan; targeted manual review of training, sampling, entry points, checkpoint loaders, feature extraction and scoring. Not a full transitive code audit.",
+  "scanned_files": [
+    {
+      "path": "DDAD_DPS/samplers.py",
+      "git_blob_sha1": "b14a7827ea0f5a9b0ef03e16ee1e9639697b901b"
+    },
+    {
+      "path": "baselines/compose.py",
+      "git_blob_sha1": "fcd06ab69fb79674f57d519c4e6078657f3d9f81"
+    },
+    {
+      "path": "baselines/ddad_config.yaml",
+      "git_blob_sha1": "28ae7c8d1ed008392fbabbf39a7b3b352b2bb31b"
+    },
+    {
+      "path": "baselines/ddad_lib/anomaly_map.py",
+      "git_blob_sha1": "9d072250cffbf2cb174f4b5bd5d63abd4f9ba290"
+    },
+    {
+      "path": "baselines/ddad_lib/dataset.py",
+      "git_blob_sha1": "e17eb868d16eb133dd332caecb9e56c891b837a4"
+    },
+    {
+      "path": "baselines/ddad_lib/feature_extractor.py",
+      "git_blob_sha1": "b8ab767658320ab2c35fb67cdd039ce4913a1140"
+    },
+    {
+      "path": "baselines/ddad_lib/loss.py",
+      "git_blob_sha1": "6a0e3a2aaa3f198ae687fa7e09d67c5a0efb3dd1"
+    },
+    {
+      "path": "baselines/ddad_lib/reconstruction.py",
+      "git_blob_sha1": "7a3585cc65ed86da6c55a5332a654f0368839726"
+    },
+    {
+      "path": "baselines/ddad_lib/resnet.py",
+      "git_blob_sha1": "24e9928db4c140ea508a249b0f3151341b900ad7"
+    },
+    {
+      "path": "baselines/ddad_lib/unet.py",
+      "git_blob_sha1": "55002a9b6c5d3b1b6f70bc3dd29ec45b9373d5ea"
+    },
+    {
+      "path": "baselines/ddad_lib/visualize.py",
+      "git_blob_sha1": "28eaf3568728d0fd3acb8c22fa1b6feb6f0fb458"
+    },
+    {
+      "path": "baselines/infer_ddad.py",
+      "git_blob_sha1": "3df72fb78020a571ff5841bc300e24d3edb67593"
+    },
+    {
+      "path": "baselines/infer_feature.py",
+      "git_blob_sha1": "5fd59cc5c79a7245cab361532cd82f76d79ea04e"
+    },
+    {
+      "path": "baselines/table1_common.py",
+      "git_blob_sha1": "f58626f2c9b1b8ac171277ca1469a558ffdf5e27"
+    },
+    {
+      "path": "configs/lactos_ct.yaml",
+      "git_blob_sha1": "042097efec82ba4ede4f3a27324eeb9fc1e0a8a2"
+    },
+    {
+      "path": "configs/lactos_ffhq_faces.yaml",
+      "git_blob_sha1": "26bb955f04f2eb144cbd19c9833570446d078f32"
+    },
+    {
+      "path": "configs/lactos_ffhq_faces_normal.yaml",
+      "git_blob_sha1": "eda653e438473a1c310b8d99c17b45638b8adbc3"
+    },
+    {
+      "path": "configs/lactos_ffhq_moreface.yaml",
+      "git_blob_sha1": "f436ae8f6aa1e6cf9e4bbd584b043fdacad2da03"
+    },
+    {
+      "path": "configs/lactos_xray.yaml",
+      "git_blob_sha1": "a8f50584b1742894fcc4b30e4a9b5bb1a6a552c9"
+    },
+    {
+      "path": "configs/recon/adm_dps_ffhq_faces.yaml",
+      "git_blob_sha1": "cdde00468a87ed1b46e71eff206298b7c6709761"
+    },
+    {
+      "path": "configs/recon/adm_dps_ffhq_faces_normal.yaml",
+      "git_blob_sha1": "a717a31b69d6f30c1f04d99ee2a4bb79b1ef81b8"
+    },
+    {
+      "path": "configs/recon/adm_dps_ffhq_moreface.yaml",
+      "git_blob_sha1": "ed1d5f93bf99d7d402f983ca7c6930ef0bde9c89"
+    },
+    {
+      "path": "configs/template.yaml",
+      "git_blob_sha1": "43dff75ab8e0b1672c843e3be1aeb8c637efe362"
+    },
+    {
+      "path": "embedder/evaluate_ddad_fe.py",
+      "git_blob_sha1": "21b9305826b9e743bb0a44d9c65d76146c4b3a3a"
+    },
+    {
+      "path": "environment/lactos.txt",
+      "git_blob_sha1": "0dd5bcaa9027b5afc57656a64f72b912fdc39374"
+    },
+    {
+      "path": "environment/patchcore.txt",
+      "git_blob_sha1": "25ce091167a77e47b336e44a69f5620e2b6695ed"
+    },
+    {
+      "path": "environment/simplenet.txt",
+      "git_blob_sha1": "ad7f6a5ba0165e72a6f8c9a20607a28d7ac94493"
+    },
+    {
+      "path": "environment/ssn_env.txt",
+      "git_blob_sha1": "dd630298dccb3440f7b5fab4a522d15a19b90900"
+    },
+    {
+      "path": "evaluate.py",
+      "git_blob_sha1": "0143401fc1dabe9af266ccd47fa4bd4c41b8ae34"
+    },
+    {
+      "path": "full_metric_table.py",
+      "git_blob_sha1": "2305e24659dd59e41039503ef24e274c36848940"
+    },
+    {
+      "path": "ood/__init__.py",
+      "git_blob_sha1": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "ood/data.py",
+      "git_blob_sha1": "30c9a4b8be11c71caff20e438f56b0c76e2fa9cf"
+    },
+    {
+      "path": "ood/embeddings.py",
+      "git_blob_sha1": "bb4a304590d46d793625b8e2d4ff6df08618a807"
+    },
+    {
+      "path": "ood/samplers/__init__.py",
+      "git_blob_sha1": "b2bd8f635845983502baf6652b72026af3d35ca2"
+    },
+    {
+      "path": "ood/samplers/additive_dps.py",
+      "git_blob_sha1": "ba74b1ade2c1dfd864b040c185fc39be2ce3e68c"
+    },
+    {
+      "path": "ood/samplers/base.py",
+      "git_blob_sha1": "23e1f85db9a530275ffc27120f286caac8c8d411"
+    },
+    {
+      "path": "ood/samplers/io.py",
+      "git_blob_sha1": "f4fb0ed812c51d1f254d41818edc6fe50b055264"
+    },
+    {
+      "path": "ood/scoring.py",
+      "git_blob_sha1": "1c196a47a861ec947cf4e06365b319a16af9e79a"
+    },
+    {
+      "path": "ood/superpixels.py",
+      "git_blob_sha1": "db6b2cdd6d978a1d4a8398b650a04260fa29e549"
+    },
+    {
+      "path": "requirements.txt",
+      "git_blob_sha1": "daa46b63b147be4717ab22f38f5176bee4044335"
+    },
+    {
+      "path": "sampling/dps/configs/ct_model_config.yaml",
+      "git_blob_sha1": "a5fdc18bf3ae7c1d1fe9ee407fe6f6ef78c9b65d"
+    },
+    {
+      "path": "sampling/dps/configs/ctgrid/sigma0.1.yaml",
+      "git_blob_sha1": "13edda65ab78cf34b70c79bc1a96e7ab1172d7fb"
+    },
+    {
+      "path": "sampling/dps/configs/diffusion_config.yaml",
+      "git_blob_sha1": "bcbfea46ce236c83f38f967b74ce2cc01907a100"
+    },
+    {
+      "path": "sampling/dps/configs/xray_inpainting_sigma2.yaml",
+      "git_blob_sha1": "b3d21014583f0baa5d83c8cd8ff8768c782dcf87"
+    },
+    {
+      "path": "sampling/dps/configs/xray_model_config.yaml",
+      "git_blob_sha1": "4747ace30f24d1646bd8a16fc6276d3108b318de"
+    },
+    {
+      "path": "sampling/dps/guided_diffusion/__init__.py",
+      "git_blob_sha1": "9665a0d63f695eab303318d824dad14041c7cde9"
+    },
+    {
+      "path": "sampling/dps/guided_diffusion/condition_methods.py",
+      "git_blob_sha1": "5453884e31494b5724a5656edab54cc05fb3b4ea"
+    },
+    {
+      "path": "sampling/dps/guided_diffusion/fp16_util.py",
+      "git_blob_sha1": "c1961650ea28affa1fe64a1794f6342d355050aa"
+    },
+    {
+      "path": "sampling/dps/guided_diffusion/gaussian_diffusion.py",
+      "git_blob_sha1": "6b1a54e7baca18aa5224e80f6dfe2df9dc13e3b9"
+    },
+    {
+      "path": "sampling/dps/guided_diffusion/measurements.py",
+      "git_blob_sha1": "c6821d08d2dd5e7726201bfc60bf6451f0a7e7d8"
+    },
+    {
+      "path": "sampling/dps/guided_diffusion/nn.py",
+      "git_blob_sha1": "a4cd59c2324b003626b8cf4c7581effd334908d3"
+    },
+    {
+      "path": "sampling/dps/guided_diffusion/posterior_mean_variance.py",
+      "git_blob_sha1": "50e20687d03f07572b834598b26ee7f5a0b2b4db"
+    },
+    {
+      "path": "sampling/dps/guided_diffusion/unet.py",
+      "git_blob_sha1": "cfda79f6a3edb47be715742b572641da561f9d9e"
+    },
+    {
+      "path": "sampling/dps/sample_fast.py",
+      "git_blob_sha1": "bf94ad94f679c2252ca4bd1e38e431b58727e12f"
+    },
+    {
+      "path": "sampling/dps/util/fastmri_utils.py",
+      "git_blob_sha1": "f669ea2dd5c48fe9798ce1ce800b9789e22e0657"
+    },
+    {
+      "path": "sampling/dps/util/img_utils.py",
+      "git_blob_sha1": "88429e63f58341a10c660c19b48ec7d83e088e66"
+    },
+    {
+      "path": "sampling/dps/util/logger.py",
+      "git_blob_sha1": "7992959680b35ab36fd9649774ad872f06847158"
+    },
+    {
+      "path": "sampling/dps/util/resizer.py",
+      "git_blob_sha1": "fa916954ed0b3bde7fe00826fcccaeb543a81624"
+    },
+    {
+      "path": "sampling/generate_recons.py",
+      "git_blob_sha1": "8155f8928f602ed0dd0c331b6e709b5abea3d08a"
+    },
+    {
+      "path": "sampling/wire_recons.py",
+      "git_blob_sha1": "d6a38474d421b7cfba16bde24842ac05c3b606ba"
+    },
+    {
+      "path": "scripts/check_assets.sh",
+      "git_blob_sha1": "5eeee37b4e6cf74bd161747cb7ff3ea1838d30f1"
+    },
+    {
+      "path": "scripts/common.sh",
+      "git_blob_sha1": "742cc3eb2b1b4b68de89b95cd75661aee0348f0d"
+    },
+    {
+      "path": "scripts/fetch_third_party.sh",
+      "git_blob_sha1": "a0b2dd67766a55dd5a2cecba104c5757910df25f"
+    },
+    {
+      "path": "scripts/make_table1.py",
+      "git_blob_sha1": "8c3c505dc27d4547620a535718284d122af6c1f0"
+    },
+    {
+      "path": "scripts/plot_maps.py",
+      "git_blob_sha1": "9c666248f2def327aad7d894c8c682eac5207611"
+    },
+    {
+      "path": "scripts/run_baselines.sh",
+      "git_blob_sha1": "2d2cc164871a5aa37fcdbcb5470c6309f4e57ff0"
+    },
+    {
+      "path": "scripts/sample_ct.sh",
+      "git_blob_sha1": "876071bdc5aaed8ed12187b32100d79b3e873565"
+    },
+    {
+      "path": "scripts/sample_ffhq.sh",
+      "git_blob_sha1": "d1eb698a6b8e97fc2f11bb4dda5852ba877643f6"
+    },
+    {
+      "path": "scripts/sample_xray.sh",
+      "git_blob_sha1": "f58d0a2476a319802e94574b574677678fe0fe1a"
+    },
+    {
+      "path": "scripts/score_lactos.sh",
+      "git_blob_sha1": "b57a934ad87b63bffbe81f96d2f5f37600088574"
+    },
+    {
+      "path": "super_pixel_generation.py",
+      "git_blob_sha1": "84ee287b1b930bf399a2739ade0a9b151fc4add8"
+    },
+    {
+      "path": "tools/check_bundle.py",
+      "git_blob_sha1": "0eed82d46a653d81128bf8c61a8b98f6c8f6bf62"
+    },
+    {
+      "path": "tools/seeded_run.py",
+      "git_blob_sha1": "35e7df509173cfac9663cacae3097a68e257e3cb"
+    },
+    {
+      "path": "toy/__init__.py",
+      "git_blob_sha1": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "toy/analyze_toy1.py",
+      "git_blob_sha1": "93c010a722d759340740e8e8a5b021aad6089bfd"
+    },
+    {
+      "path": "toy/analyze_toy2.py",
+      "git_blob_sha1": "c4de516249b1c73679912518bc650a58bb2c6430"
+    },
+    {
+      "path": "toy/common.sh",
+      "git_blob_sha1": "4a6bacb4d9275c2f2edea1194bd822a6fbc0f2d2"
+    },
+    {
+      "path": "toy/config.yaml",
+      "git_blob_sha1": "fb61f842e911efd32eadde836b2660ef46594fff"
+    },
+    {
+      "path": "toy/ddad_config.yaml",
+      "git_blob_sha1": "b2999237c6141565d913f63ff5c78920276a8547"
+    },
+    {
+      "path": "toy/gen_data.py",
+      "git_blob_sha1": "6d0d912abd9d8e5102cafe4b6eaa126deb6fcca0"
+    },
+    {
+      "path": "toy/prepare_superpixels.py",
+      "git_blob_sha1": "89c58021ad969763d350ea0559163ca2ff84553e"
+    },
+    {
+      "path": "toy/run_patchcore.py",
+      "git_blob_sha1": "dd27ee5038a655f8f39ba350500a0fc129a160dc"
+    },
+    {
+      "path": "toy/run_toy1.sh",
+      "git_blob_sha1": "0b1596bc06fb27d85bc78da469f3a316d0d6255c"
+    },
+    {
+      "path": "toy/run_toy2.sh",
+      "git_blob_sha1": "0ba524516f903499fde12b976a5a778697359351"
+    },
+    {
+      "path": "toy/score_from_recons.py",
+      "git_blob_sha1": "9d07cb7707863ed8b19bdbf38ca3618fa2a989c1"
+    },
+    {
+      "path": "toy/shapes.py",
+      "git_blob_sha1": "3099a35c97a632498947094f86a0dc994946843c"
+    },
+    {
+      "path": "toy/tests/__init__.py",
+      "git_blob_sha1": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "toy/tests/test_gen_data.py",
+      "git_blob_sha1": "a926ae4f942a73024d91856f2f08fdcc7e1b9360"
+    },
+    {
+      "path": "toy/tests/test_score_modes.py",
+      "git_blob_sha1": "b04daab24d49948c4206f6177ba5e80d1f8ab65f"
+    },
+    {
+      "path": "toy/tests/test_shapes.py",
+      "git_blob_sha1": "150f6d9af70c29b5cdd8c92ab5f8bbcf883c9d1b"
+    },
+    {
+      "path": "toy/tests/test_shapes_star.py",
+      "git_blob_sha1": "283bee845970b891089995eae63308a383a899ca"
+    },
+    {
+      "path": "toy/train_prior.py",
+      "git_blob_sha1": "3a666f82edf26a04f1fd47f356152ef90a547771"
+    },
+    {
+      "path": "toy/train_priors.sh",
+      "git_blob_sha1": "c91cde88f1254eb0f6fd0db5c2d554e5cef0be14"
+    }
+  ],
+  "findings": [
+    {
+      "path": "baselines/ddad_lib/feature_extractor.py",
+      "line": 112,
+      "category": "deserialization"
+    },
+    {
+      "path": "baselines/ddad_lib/feature_extractor.py",
+      "line": 204,
+      "category": "deserialization"
+    },
+    {
+      "path": "baselines/ddad_lib/feature_extractor.py",
+      "line": 211,
+      "category": "deserialization"
+    },
+    {
+      "path": "baselines/infer_feature.py",
+      "line": 50,
+      "category": "deserialization"
+    },
+    {
+      "path": "baselines/infer_feature.py",
+      "line": 105,
+      "category": "deserialization"
+    },
+    {
+      "path": "baselines/infer_feature.py",
+      "line": 122,
+      "category": "deserialization"
+    },
+    {
+      "path": "baselines/infer_feature.py",
+      "line": 140,
+      "category": "deserialization"
+    },
+    {
+      "path": "baselines/infer_ddad.py",
+      "line": 65,
+      "category": "deserialization"
+    },
+    {
+      "path": "embedder/evaluate_ddad_fe.py",
+      "line": 57,
+      "category": "deserialization"
+    },
+    {
+      "path": "evaluate.py",
+      "line": 19,
+      "category": "process launch"
+    },
+    {
+      "path": "evaluate.py",
+      "line": 55,
+      "category": "deserialization"
+    },
+    {
+      "path": "evaluate.py",
+      "line": 223,
+      "category": "process launch"
+    },
+    {
+      "path": "ood/embeddings.py",
+      "line": 68,
+      "category": "download or external dependency"
+    },
+    {
+      "path": "ood/samplers/io.py",
+      "line": 72,
+      "category": "deserialization"
+    },
+    {
+      "path": "ood/samplers/io.py",
+      "line": 122,
+      "category": "deserialization"
+    },
+    {
+      "path": "sampling/dps/guided_diffusion/measurements.py",
+      "line": 191,
+      "category": "deserialization"
+    },
+    {
+      "path": "sampling/dps/sample_fast.py",
+      "line": 65,
+      "category": "config loader"
+    },
+    {
+      "path": "scripts/fetch_third_party.sh",
+      "line": 12,
+      "category": "download or external dependency"
+    },
+    {
+      "path": "scripts/fetch_third_party.sh",
+      "line": 13,
+      "category": "download or external dependency"
+    },
+    {
+      "path": "scripts/fetch_third_party.sh",
+      "line": 14,
+      "category": "download or external dependency"
+    },
+    {
+      "path": "scripts/fetch_third_party.sh",
+      "line": 15,
+      "category": "download or external dependency"
+    },
+    {
+      "path": "toy/score_from_recons.py",
+      "line": 24,
+      "category": "process launch"
+    },
+    {
+      "path": "toy/score_from_recons.py",
+      "line": 112,
+      "category": "process launch"
+    }
+  ]
+}
