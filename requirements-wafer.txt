@@ -1,0 +1,7 @@
+# Runtime only. Select the approved PyTorch CPU/CUDA wheel separately.
+# Tested lock files and dependency audit are recorded under reports/wafer/.
+torch>=2.15,<3
+numpy>=1.26,<3
+Pillow>=13,<14
+scipy>=1.13,<2
+scikit-image>=0.25,<1

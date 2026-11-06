@@ -1,0 +1,53 @@
+name: Wafer diffusion synthetic checks
+
+on:
+  push:
+    branches: ['feature/wafer-diffusion-offline', main]
+    paths: ['wafer_diffusion/**', 'tests/**', 'configs/wafer_*.json', 'requirements-wafer*', '.github/workflows/wafer-ci.yml']
+  pull_request:
+    paths: ['wafer_diffusion/**', 'tests/**', 'configs/wafer_*.json', 'requirements-wafer*', '.github/workflows/wafer-ci.yml']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: wafer-ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  synthetic-only:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    env:
+      OMP_NUM_THREADS: '2'
+      MKL_NUM_THREADS: '2'
+      PYTHONUNBUFFERED: '1'
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
+        with:
+          python-version: '3.12'
+      - name: Install reviewed CPU environment
+        run: |
+          python -m pip install --only-binary=:all: 'pip>=26.2' 'setuptools>=84.1'
+          python -m pip install --only-binary=:all: torch==2.15.0 --index-url https://download.pytorch.org/whl/cpu
+          python -m pip install --only-binary=:all: -r requirements-wafer.lock
+          python -m pip install --only-binary=:all: pytest==9.2.0 pip-audit==2.10.1
+      - name: Fetch only public, pinned source; no datasets or model assets
+        run: |
+          git -c core.autocrlf=false clone --no-checkout https://github.com/voilalab/LACToS.git "$RUNNER_TEMP/lactos-reviewed"
+          git -C "$RUNNER_TEMP/lactos-reviewed" -c core.autocrlf=false checkout --detach d1ebf01dd268629bed18f3e3e9ae9c22c666f117
+          echo "LACTOS_REVIEWED_SOURCE=$RUNNER_TEMP/lactos-reviewed" >> "$GITHUB_ENV"
+      - name: Known-vulnerability check on locked runtime packages
+        run: python -m pip_audit -r requirements-wafer.lock --no-deps --disable-pip --progress-spinner off
+      - name: Offline unit and synthetic end-to-end tests
+        run: python -m pytest -q
+      - name: Exercise guarded CLI with synthetic images only
+        run: python -m wafer_diffusion smoke --upstream "$LACTOS_REVIEWED_SOURCE" --output "$RUNNER_TEMP/wafer-synthetic"
+      - name: Publish text summary only
+        run: |
+          echo 'Synthetic training, resume, DPS, official scoring and safety checks passed.' >> "$GITHUB_STEP_SUMMARY"
+          cat "$RUNNER_TEMP/wafer-synthetic/smoke_report.json" >> "$GITHUB_STEP_SUMMARY"

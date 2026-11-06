@@ -1,4 +1,16 @@
-# LACToS 논문 실행 검증
+# LACToS: wafer diffusion 파이프라인과 논문 실행 검증
+
+## 새 wafer 이미지로 학습·inference
+
+정상 wafer 이미지로 diffusion model을 처음부터 학습하고, 검사 이미지마다 여러 reconstruction을 생성해 공식 LACToS intensity-only anomaly heatmap을 계산하는 `wafer_diffusion/`를 추가했습니다.
+
+- [설치·데이터 구성·학습·단일 이미지 inference·전체 실행](docs/WAFER_PIPELINE.md)
+- [코드·의존성 보안 검토와 적용한 보호](docs/SECURITY_REVIEW.md)
+- [검증 결과](reports/wafer/validation.md)
+
+실제 wafer 데이터는 사내 실행 환경에서 사용합니다. 새 runtime에는 자동 다운로드나 외부 전송 기능이 없으며, GitHub CI에는 합성 이미지만 사용합니다. 학습·DPS 코드는 새로 구현했고 공식 scoring 파일 두 개는 검토한 commit/hash의 로컬 source를 연결합니다. 실제 wafer 성능과 GPU 실행은 아직 검증하지 않았습니다.
+
+이하의 기존 paper validation은 공개 benchmark 재현용이며 wafer 실행과 별개입니다.
 
 사용자 검증 저장소: `yujinkimmn/LACToS`. 논문 저자의 공식 저장소는 아래의 `voilalab/LACToS`입니다.
 
